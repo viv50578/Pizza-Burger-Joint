@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>
+Admin Login
+</title>
+</head>
+
+<style>
+html,body{
+font-family: 'Numans', sans-serif;
+}
+
+*
+{
+text-align: center;
+}
+</style>
+
+<body bgcolor = "aqua">
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>
+  Admin Login
+</h1>
+<form name="login">
+Username <input type="text" name="userid">
+<br>
+<br>
+Password <input type="password" name="pswrd">
+<br>
+<br>
+<input type="button" onclick="check(this.form)" value="Login">
+</form>
+<script>
+function check(form)
+{
+ if(form.userid.value == "Vivek" && form.pswrd.value == "pbj#058")
+  {
+    window.open('View.php')
+  }
+ else
+ {
+   alert("Error: Incorrect Password or Username")
+  }
+}
+</script>
+</body>
+</html>
