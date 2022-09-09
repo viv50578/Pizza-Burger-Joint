@@ -1,0 +1,62 @@
+<html>
+<head>
+<style>
+*
+{
+text-align: center;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body bgcolor = "MediumSpringGreen">
+
+<br>
+<h1>Addition Form</h1>
+<br>
+
+<font size = "4">
+
+<form method = 'post' action="index2.php" class = "add">
+
+<label for="PB">What do you want to add: </label>
+<select name="PB" id="PB">
+<option value="Pizza">Pizza</option>
+<option value="Burger">Burger</option>
+</select>
+<br><br><br>
+
+<label for="Img">Select image:</label>
+<input type="file" id="img" name="Img" accept="image/*" required><br><br>
+
+<label for="Name">Name: </label><br><br>
+<input type="text" id="Name" name="Name" required><br><br>
+
+<label for="Price">Price: </label><br><br>
+<input type="number" id="Price" name="Price" required><br><br>
+
+<label for="Description">Description: </label><br><br>
+<input type="text" id="Description" name="Description" required><br><br>
+
+<input type="submit" value="Submit">
+</form> 
+
+</body>
+</html>
+
+<script>
+$(function(){
+    $('.add').on('submit', function(event){
+        event.preventDefault();
+        var fileInput = document.getElementById('img');
+        var reader = new FileReader();
+        reader.readAsDataURL(fileInput.files[0]);
+        var form1 =this;
+        reader.onload = function () {
+            $(form1).append('<input type="hidden" name="image" value='+reader.result+'>');
+            form1.submit();
+        };
+    });
+});
+</script>
+
