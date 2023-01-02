@@ -33,7 +33,7 @@ div {
 <div>
 <form method='post' action="index.php">
 
-<label>Username yo </label>
+<label>Username </label>
 <input type="text" id="name" name='name' required><br><br><br>
 
 <label>E-mail </label>
