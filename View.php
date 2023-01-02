@@ -10,6 +10,11 @@
 <body>
 <br>
 <font size = "4">
+
+<a href = "Home page.php">
+<button type="submit" class="btn btn-info">Home Page</button>
+</a><br><br>
+
 <a href = "Admin Addition.html">
 <button type="submit" class="btn btn-info">Add Pizza/Burger</button>
 </a><br><br>

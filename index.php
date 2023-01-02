@@ -10,7 +10,6 @@ $con = mysqli_connect($server, $username, $password);
 if(!$con){
     die("Connection to this database failed due to" . mysqli_connect_error());
 }
-//echo "Success connecting to the db"; how to handle cookies with php(next tuesday)
 
 $username = $_POST['name'];
 $Email = $_POST['email'];
@@ -20,8 +19,10 @@ $sql = "INSERT INTO `user login`.`login information` (`Sr. No.`, `Username`, `E-
 
 if ($con->query($sql) === TRUE)
 {
-    echo "New record created successfully";
-    header('Location:login.php');
+    echo '<script type="text/JavaScript">
+        alert("Account created successfully");
+        window.location.href = "login.php";;
+    </script>';
 }
 else
 {

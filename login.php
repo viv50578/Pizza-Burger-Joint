@@ -154,6 +154,8 @@ Don't have an account?<a href="SignUp.php">Sign Up</a>
 </html>
 
 <?php
+    session_start();
+
 if ( 'POST' === $_SERVER['REQUEST_METHOD'] )
 {
     $server = "localhost";
@@ -177,6 +179,8 @@ if ( 'POST' === $_SERVER['REQUEST_METHOD'] )
         //     header('Location: //localhost/WPL/Admin Tools.html');
         // }
         // else
+        $row = $result->fetch_assoc();
+        $_SESSION['Username'] = $row['Sr. No.'];
         header('Location: //localhost/WPL/Home Page.php');
     } 
     else

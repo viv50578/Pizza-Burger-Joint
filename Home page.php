@@ -33,6 +33,11 @@ function normalImg(x) {
 <br>
 <font size = "10" color = "cyan">
 Pizza-Burger Joint
+
+<a href = "logout.php">
+<img src = "https://thumbs.dreamstime.com/b/logout-isolated-special-cyan-blue-round-button-abstract-illustration-logout-special-cyan-blue-round-button-103957079.jpg" height = "50" width = "50" align = "right" style = "border-radius: 50%">
+</a>
+
 <a href = "Login.html">
 <img src = "https://www.kindpng.com/picc/m/105-1055656_account-user-profile-avatar-avatar-user-profile-icon.png" height = "50" width = "50" align = "right" style = "border-radius: 50%">
 </a>

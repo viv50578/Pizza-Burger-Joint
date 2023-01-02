@@ -20,8 +20,10 @@ $sql = "INSERT INTO `admin`.`admintools` (`Sr. No.`, `PB`, `Name`, `Image`, `Pri
 
 if ($con->query($sql) === TRUE)
 { 
-    echo "New record created successfully";
-    header('Location:View.php');
+    echo '<script type="text/JavaScript">
+        alert("New record created successfully");
+        window.location.href = "View.php";;
+    </script>';
 }
 else
 {

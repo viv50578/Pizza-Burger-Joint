@@ -1,4 +1,13 @@
 <?php
+    session_start();
+    if(isset($_SESSION['Username']))
+        $userID=$_SESSION['Username'];
+    else{
+        header("Location: login.php");
+    }
+?>
+
+<?php
     $server = "localhost";
     $username = "root";
     $password = "";
@@ -79,6 +88,11 @@ var img= [<?php echo '"'.implode('","', $img).'"' ?>];
 var Price= [<?php echo '"'.implode('","', $Price).'"' ?>];
 var Description= [<?php echo '"'.implode('","', $Description).'"' ?>];
 
+function check(form)
+{
+  document.getElementById('form').innerHTML
+}
+
     for(let i=0;i<img.length;i++){
       document.getElementById('list').innerHTML+="\
 <figure>\
@@ -86,8 +100,8 @@ var Description= [<?php echo '"'.implode('","', $Description).'"' ?>];
 <font size = 4>\
 <label for=quantity>Quantity:</label>\
   <input type=number id=quantity name=quantity min=0 max=10>\
-  <a href = 'Cart.php'>\
-  <button id=i  onclick='check(this.form)' type=submit class='btn btn-danger'>Add to Cart</button>\
+  <a href = Order.html>\
+  <button id="+id[i]+"  onclick='check(this.form)' type=submit class='btn btn-danger'>Order Now</button>\
   </a>\
 <figcaption>\
 <font size = 6>\
@@ -98,12 +112,8 @@ var Description= [<?php echo '"'.implode('","', $Description).'"' ?>];
 </figcaption>\
 <br>\
 </figure>";      
-    }
-
-function check(form)
-{
-document.getElementById('i').innerHTML
 }
+
 </script>;
 </html>
 

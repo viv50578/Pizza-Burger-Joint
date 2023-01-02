@@ -20,8 +20,10 @@ $sql = "UPDATE `admin`.`admintools` SET `Name` = '$NewName', `Image` = '$img', `
 
 if ($con->query($sql) === TRUE)
 { 
-    echo "Record edited successfully";
-    header('Location:View.php');
+    echo '<script type="text/JavaScript">
+        alert("Record edited successfully");
+        window.location.href = "View.php";;
+    </script>';
 }
 else
 {

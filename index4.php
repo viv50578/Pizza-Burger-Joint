@@ -18,8 +18,10 @@ $sql = "UPDATE `user login`.`login information` SET `Password` = '$password' WHE
 
 if ($con->query($sql) === TRUE)
 { 
-    echo "Record edited successfully";
-    header('Location:login.php');
+    echo '<script type="text/JavaScript">
+        alert("Password changed successfully");
+        window.location.href = "login.php";;
+    </script>';
 }
 else
 {
