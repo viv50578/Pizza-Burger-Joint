@@ -73,7 +73,7 @@ while ($row = $res->fetch_assoc()) {
     <a href="Home page.php">Home Page</a>
     <a class="active" href="Pizza.php">Pizzas</a>
     <a href="Burger.php">Burgers</a>
-    <a href="Login.html" style="float: right" class="pull-left"><img
+    <a href="login.php" style="float: right" class="pull-left"><img
         src="https://www.kindpng.com/picc/m/105-1055656_account-user-profile-avatar-avatar-user-profile-icon.png"
         height="37.5" width="37.5" style="border-radius: 50%"></a>
     <a href="Cart.html" style="float: right" class="pull-left"><img

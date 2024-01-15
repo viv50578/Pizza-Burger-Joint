@@ -72,7 +72,7 @@ while ($row = $res->fetch_assoc()) {
     <a href="Home page.php">Home Page</a>
     <a href="Pizza.php">Pizzas</a>
     <a class="active" href="Burger.html">Burgers</a>
-    <a href="Login.html" style="float: right" class="pull-left"><img
+    <a href="login.php" style="float: right" class="pull-left"><img
         src="https://www.kindpng.com/picc/m/105-1055656_account-user-profile-avatar-avatar-user-profile-icon.png"
         height="37.5" width="37.5" style="border-radius: 50%"></a>
     <a href="Cart.html" style="float: right" class="pull-left"><img
@@ -96,7 +96,7 @@ while ($row = $res->fetch_assoc()) {
     for (let i = 0; i < img.length; i++) {
       document.getElementById('list').innerHTML += "\
 <figure>\
-<img src = "+ img[i] + " height = '283' width = '367'>\
+<img src = "+ img[i] + " height = '162' width = '228'>\
 <font size = 4>\
 <label for=quantity>Quantity:</label>\
   <input type=number id=quantity name=quantity min=0 max=10>\
