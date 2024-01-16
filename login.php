@@ -3,13 +3,13 @@
 <head>
 
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Numans');
+        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Kaushan+Script&family=Merienda:wght@600&family=Parisienne&family=Roboto+Slab&family=Ubuntu&family=Vollkorn&display=swap');
 
         html,
         body {
-            background-image: url("https://wallpaperaccess.com/full/2560166.jpg");
+            background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg");
             height: 100%;
-            font-family: 'Numans', sans-serif;
+            font-family: 'Vollkorn', serif;
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -58,7 +58,6 @@
         input:focus {
             outline: 0 0 0 0 !important;
             box-shadow: 0 0 0 0 !important;
-
         }
 
         .remember {

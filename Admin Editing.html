@@ -1,42 +1,143 @@
 <html>
 
 <head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
-        * {
+        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Kaushan+Script&family=Merienda:wght@600&family=Parisienne&family=Roboto+Slab&family=Ubuntu&family=Vollkorn&display=swap');
+
+        *{
             text-align: center;
+            color: white;
+        }
+
+        html,
+        body {
+            background-image: url("https://wallpaperaccess.com/full/2560166.jpg");
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .edit,.card h1{
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .container {
+            height: 100%;
+            align-content: center;
+        }
+
+        .card {
+            height: 550px;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 500px;
+            background-color: rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .social_icon span {
+            font-size: 60px;
+            margin-left: 10px;
+            color: #FFC312;
+        }
+
+        .social_icon span:hover {
+            color: white;
+            cursor: pointer;
+        }
+
+        .card-header h3 {
+            color: white;
+        }
+
+        .social_icon {
+            position: absolute;
+            right: 20px;
+            top: -45px;
+        }
+
+        .input-group-prepend span {
+            width: 50px;
+            background-color: #FFC312;
+            color: black;
+            border: 0 !important;
+        }
+
+        input:focus {
+            outline: 0 0 0 0 !important;
+            box-shadow: 0 0 0 0 !important;
+        }
+
+        .remember {
+            color: white;
+        }
+
+        .remember input {
+            width: 20px;
+            height: 20px;
+            margin-left: 15px;
+            margin-right: 5px;
+        }
+
+        .login_btn {
+            color: black;
+            background-color: #FFC312;
+            width: 100px;
+        }
+
+        .login_btn:hover {
+            color: black;
+            background-color: white;
+        }
+
+        .links {
+            color: white;
+        }
+
+        .links a {
+            margin-left: 4px;
         }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Admin Editing</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
-<body bgcolor="Violet">
-    <br>
-    <h1>Editing Form</h1>
-    <br>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <h1>Editing Form</h1>
+                <form method='post' action="index3.php" class="edit">
 
-    <font size="4">
+                    <label for="Name">Name of the Pizza/Burger you want to edit: </label><br><br>
+                    <input type="text" id="Name" name="Name" required><br><br>
+        
+                    <label for="Img">Select image:</label>
+                    <input type="file" id="img" name="Img" accept="image/*" required><br><br>
+        
+                    <label for="Name">New Name: </label><br>
+                    <input type="text" id="Name" name="NewName" required><br><br>
+        
+                    <label for="Price">New Price: </label><br>
+                    <input type="number" id="Price" name="Price" style="color: black;" required><br><br>
+        
+                    <label for="Description">New Description: </label><br>
+                    <input type="text" id="Description" name="Description" required><br><br>
+        
+                    <input type="submit" value="Submit" style="color: black;">
+                </form>
+            </div>
+        </div>
 
-        <form method='post' action="index3.php" class="edit">
-
-            <label for="Name">Name of the Pizza/Burger you want to edit: </label><br><br>
-            <input type="text" id="Name" name="Name" required><br><br>
-
-            <label for="Img">Select image:</label>
-            <input type="file" id="img" name="Img" accept="image/*" required><br><br>
-
-            <label for="Name">New Name: </label><br>
-            <input type="text" id="Name" name="NewName" required><br><br>
-
-            <label for="Price">New Price: </label><br>
-            <input type="number" id="Price" name="Price" required><br><br>
-
-            <label for="Description">New Description: </label><br>
-            <input type="text" id="Description" name="Description" required><br><br>
-
-            <input type="submit" value="Submit">
-        </form>
-
+    </div>
 </body>
 
 </html>
