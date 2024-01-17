@@ -5,24 +5,40 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&family=Kaushan+Script&family=Merienda:wght@600&family=Parisienne&family=Roboto+Slab&family=Ubuntu&family=Vollkorn&display=swap');
 
-        html,
         body {
-            background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg");
-            height: 100%;
-            font-family: 'Vollkorn', serif;
-            background-repeat: no-repeat;
-            background-size: cover;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
-            height: 100%;
-            align-content: center;
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .left-half {
+            background-color: coral;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .left-half img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .right-half {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card {
             height: 370px;
-            margin-top: auto;
-            margin-bottom: auto;
             width: 400px;
             background-color: rgba(0, 0, 0, 0.5) !important;
         }
@@ -89,6 +105,7 @@
         .links a {
             margin-left: 4px;
         }
+
     </style>
     <title>User Login</title>
 
@@ -103,7 +120,12 @@
 
 <body>
     <div class="container">
-        <div class="d-flex justify-content-center h-100">
+        <div class="left-half">
+            <img
+                src="https://img.freepik.com/free-vector/cute-panda-eating-burger-cartoon-vector-illustration-animal-food-concept-isolated-vector-flat-cartoon-style_138676-1936.jpg?w=740&t=st=1705522430~exp=1705523030~hmac=5eab793c9c1448e108abad489efb22a4c410afaf35cf958d1b14388a18ad1ded">
+        </div>
+
+        <div class="right-half">
             <div class="card">
                 <div class="card-header">
                     <h3>User Login</h3>
@@ -151,9 +173,7 @@
                 </div>
             </div>
         </div>
-
     </div>
 </body>
 
 </html>
-

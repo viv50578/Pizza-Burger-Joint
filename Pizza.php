@@ -34,9 +34,21 @@ while ($row = $res->fetch_assoc()) {
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script>
+        function confirmLogout() {
+            var result = confirm("Are you sure you want to logout?");
+            if (result) {
+                // If user clicks 'OK', proceed with logout
+                window.location.href = "logout.php";
+            }
+            // If user clicks 'Cancel', do nothing
+        }
+    </script>
+
   <style>
     .topnav {
-      background-color: #333;
+      background-color: #000;
       overflow: hidden;
       position: fixed;
       top: 0;
@@ -69,17 +81,18 @@ while ($row = $res->fetch_assoc()) {
 
 <body background="https://coolbackgrounds.io/images/backgrounds/index/aqua-d9b59c89.png">
 
-  <div class="topnav">
+<div class="topnav">
     <a href="Home page.php">Home Page</a>
     <a class="active" href="Pizza.php">Pizzas</a>
     <a href="Burger.php">Burgers</a>
-    <a href="login.php" style="float: right" class="pull-left"><img
-        src="https://www.kindpng.com/picc/m/105-1055656_account-user-profile-avatar-avatar-user-profile-icon.png"
-        height="37.5" width="37.5" style="border-radius: 50%"></a>
-    <a href="Cart.html" style="float: right" class="pull-left"><img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTRjlPrXg7wrtYiIu5aoQdECIXK2fyDE2yCA&usqp=CAU"
-        height="37.5" width="37.5"></a>
-  </div>
+    <!-- Call the confirmLogout function when clicking on the logout link -->
+    <a href="javascript:void(0);" onclick="confirmLogout()" style="float: right">
+        <img src="https://www.kindpng.com/picc/m/105-1055656_account-user-profile-avatar-avatar-user-profile-icon.png" height="37.5" width="37.5" style="border-radius: 50%">
+    </a>
+    <a href="Cart.html" style="float: right">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTRjlPrXg7wrtYiIu5aoQdECIXK2fyDE2yCA&usqp=CAU" height="37.5" width="37.5">
+    </a>
+</div>
   <br>
   <br>
   <br>
