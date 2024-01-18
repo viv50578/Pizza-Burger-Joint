@@ -82,8 +82,8 @@ while ($row = $res->fetch_assoc()) {
 
 <div class="topnav">
     <a href="Home page.php">Home Page</a>
-    <a class="active" href="Pizza.php">Pizzas</a>
-    <a href="Burger.php">Burgers</a>
+    <a href="Pizza.php">Pizzas</a>
+    <a class="active" href="Burger.php">Burgers</a>
     <!-- Call the confirmLogout function when clicking on the logout link -->
     <a href="javascript:void(0);" onclick="confirmLogout()" style="float: right">
         <img src="https://www.kindpng.com/picc/m/105-1055656_account-user-profile-avatar-avatar-user-profile-icon.png" height="37.5" width="37.5" style="border-radius: 50%">

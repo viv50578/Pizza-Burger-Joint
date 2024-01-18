@@ -17,7 +17,6 @@
         }
 
         .left-half {
-            background-color: coral;
             flex: 1;
             display: flex;
             align-items: center;
@@ -106,23 +105,87 @@
             margin-left: 4px;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Kaushan+Script&family=Merienda:wght@600&family=Parisienne&family=Roboto+Slab&family=Ubuntu&family=Vollkorn&display=swap');
+
+    *{
+            text-align: center;
+            transition: all ease 0.2s;
+        }
+
+        html,
+        body {
+            background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg");
+            background-size: cover;
+        }
+
+        .log,.box h2{
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .box h2{
+            font-weight: 600;
+        }
+
+        .box {
+            height: 315px;
+            margin-top: auto;
+            margin-bottom: auto;
+            padding-top: 10px;
+            width: 500px;
+            background-color: rgba(248, 244, 229);
+            box-shadow: 15px 15px #ffa580, 15px 15px 0px 3.5px black;
+            border: 4px solid #000;
+            padding-left: 35px;
+            padding-right: 35px;
+            border-radius: 10px;
+        }
+
+        .log input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffa580;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2.5px solid #000;
+        }
+
+        .log input[type="submit"]:hover {
+            background-color: #ff8f63 !important;
+        }
+
+        .input-container{
+            margin-bottom: 15px;
+        }
+
+        .input-container input {
+            flex: 2;
+            padding: 15px;
+        }
+        
+        .input-group-text {
+            width: 40px;
+            background-color: #95a4ff !important;
+        }
+        
+        .form-control{
+            text-align: left;
+        }
+
     </style>
     <title>User Login</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/e9f27665a4.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
     <div class="container">
         <div class="left-half">
             <img
-                src="https://img.freepik.com/free-vector/cute-panda-eating-burger-cartoon-vector-illustration-animal-food-concept-isolated-vector-flat-cartoon-style_138676-1936.jpg?w=740&t=st=1705522430~exp=1705523030~hmac=5eab793c9c1448e108abad489efb22a4c410afaf35cf958d1b14388a18ad1ded">
+                src="https://img.freepik.com/free-vector/cute-panda-eating-burger-cartoon-vector-illustration-animal-food-concept-isolated-vector-flat-cartoon-style_138676-1936.jpg?w=740&t=st=1705607087~exp=1705607687~hmac=abf332ad7ca9d506b6a23963341e0d6e30047bc53bafc25c0bc32cda7f71901c">
         </div>
 
         <div class="right-half">
@@ -133,10 +196,10 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="index5.php">
+                    <form method="post" action="index5.php" class="log">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
                             </div>
 
                             <input type="text" name="Username" class="form-control" placeholder="Username">
@@ -145,7 +208,7 @@
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                             </div>
 
                             <input type="password" name="Password" class="form-control" placeholder="Password">

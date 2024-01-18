@@ -1,9 +1,23 @@
+<?php
+session_start();
+if (isset($_SESSION['Username']))
+  $userID = $_SESSION['Username'];
+else {
+  header("Location: login.php");
+}
+?>
+
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <style>
+    body{
+        /* background-color: black; */
+    }
     th {
         width: 15vw;
     }
@@ -17,11 +31,11 @@
             <button type="submit" class="btn btn-info">Home Page</button>
         </a><br><br>
 
-        <a href="Admin Addition.html">
+        <a href="Admin Addition.php">
             <button type="submit" class="btn btn-info">Add Pizza/Burger</button>
         </a><br><br>
 
-        <a href="Admin Editing.html">
+        <a href="Admin Editing.php">
             <button type="submit" class="btn btn-warning">Edit Pizza/Burger</button>
         </a><br><br>
 

@@ -30,6 +30,7 @@ if ($result->num_rows > 0) {
 } else {
     echo '<script type="text/JavaScript"> 
             alert("Invalid user credentials.");
+            window.location.href = "login.php";
           </script>';
 }
 ?>
