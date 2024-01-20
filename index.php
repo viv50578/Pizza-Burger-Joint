@@ -1,8 +1,8 @@
 <?php
+session_start();
+
 $server = "localhost";
-
 $username = "root";
-
 $password = "";
 
 $con = mysqli_connect($server, $username, $password);
@@ -15,15 +15,17 @@ $username = $_POST['name'];
 $Email = $_POST['email'];
 $PhoneNumber = $_POST['number'];
 $password = $_POST['password'];
+
 $sql = "INSERT INTO `user login`.`login information` (`Sr. No.`, `Username`, `E-mail`, `Phone Number`, `Password`) VALUES (NULL,'$username', '$Email', '$PhoneNumber', '$password');";
 
 if ($con->query($sql) === TRUE) {
-    echo '<script type="text/JavaScript">
-        alert("Account created successfully");
-        window.location.href = "Pizza.php";;
-    </script>';
+    // Set session for the user who just signed up
+    $newUserId = mysqli_insert_id($con);
+    $_SESSION['Username'] = $newUserId;
+    
+    header('Location: //localhost/Pizza-Burger-Joint/Pizza.php');
+    exit();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $con->error;
 }
-
 ?>

@@ -5,11 +5,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&family=Kaushan+Script&family=Merienda:wght@600&family=Parisienne&family=Roboto+Slab&family=Ubuntu&family=Vollkorn&display=swap');
 
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
         .container {
             display: flex;
             height: 100vh;
@@ -21,7 +16,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         .left-half img {
@@ -34,80 +29,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .card {
-            height: 370px;
-            width: 400px;
-            background-color: rgba(0, 0, 0, 0.5) !important;
-        }
-
-        .social_icon span {
-            font-size: 60px;
-            margin-left: 10px;
-            color: #FFC312;
-        }
-
-        .social_icon span:hover {
-            color: white;
-            cursor: pointer;
-        }
-
-        .card-header h3 {
-            color: white;
-        }
-
-        .social_icon {
-            position: absolute;
-            right: 20px;
-            top: -45px;
+            margin-left: 30px;
         }
 
         .input-group-prepend span {
-            width: 50px;
-            background-color: #FFC312;
+            width: 41px;
+            background-color: #95a4ff;
             color: black;
-            border: 0 !important;
         }
 
-        input:focus {
-            outline: 0 0 0 0 !important;
-            box-shadow: 0 0 0 0 !important;
-        }
-
-        .remember {
-            color: white;
+        .input-group-append span {
+            width: 41px;
+            background-color: #95a4ff;
+            color: black;
         }
 
         .remember input {
             width: 20px;
             height: 20px;
-            margin-left: 15px;
+            margin-left: 17px;
             margin-right: 5px;
-        }
-
-        .login_btn {
-            color: black;
-            background-color: #FFC312;
-            width: 100px;
-        }
-
-        .login_btn:hover {
-            color: black;
-            background-color: white;
-        }
-
-        .links {
-            color: white;
         }
 
         .links a {
             margin-left: 4px;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Kaushan+Script&family=Merienda:wght@600&family=Parisienne&family=Roboto+Slab&family=Ubuntu&family=Vollkorn&display=swap');
-
-    *{
+        *{
             text-align: center;
             transition: all ease 0.2s;
         }
@@ -127,7 +75,8 @@
         }
 
         .box {
-            height: 315px;
+            display: flex;
+            flex-direction: column;
             margin-top: auto;
             margin-bottom: auto;
             padding-top: 10px;
@@ -135,8 +84,8 @@
             background-color: rgba(248, 244, 229);
             box-shadow: 15px 15px #ffa580, 15px 15px 0px 3.5px black;
             border: 4px solid #000;
-            padding-left: 35px;
-            padding-right: 35px;
+            padding-left: 45px;
+            padding-right: 45px;
             border-radius: 10px;
         }
 
@@ -162,11 +111,6 @@
             padding: 15px;
         }
         
-        .input-group-text {
-            width: 40px;
-            background-color: #95a4ff !important;
-        }
-        
         .form-control{
             text-align: left;
         }
@@ -184,59 +128,67 @@
 <body>
     <div class="container">
         <div class="left-half">
-            <img
-                src="https://img.freepik.com/free-vector/cute-panda-eating-burger-cartoon-vector-illustration-animal-food-concept-isolated-vector-flat-cartoon-style_138676-1936.jpg?w=740&t=st=1705607087~exp=1705607687~hmac=abf332ad7ca9d506b6a23963341e0d6e30047bc53bafc25c0bc32cda7f71901c">
+            <img src="panda.jpg">
         </div>
 
         <div class="right-half">
-            <div class="card">
-                <div class="card-header">
-                    <h3>User Login</h3>
-                    <div class="d-flex justify-content-end social_icon">
-                    </div>
-                </div>
-                <div class="card-body">
+            <div class="d-flex justify-content-center h-100">
+                <div class="box">
+                    <h2>User Login</h2>
+                    <br>
                     <form method="post" action="index5.php" class="log">
-                        <div class="input-group form-group">
+                        
+                        <div class="input-container input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
                             </div>
-
                             <input type="text" name="Username" class="form-control" placeholder="Username">
-
                         </div>
 
-                        <div class="input-group form-group">
+                        <div class="input-container input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                             </div>
-
-                            <input type="password" name="Password" class="form-control" placeholder="Password">
+                            <input type="password" id="password" name="Password" class="form-control" placeholder="Password">
+                            <div class="input-group-append">
+                                <span class="input-group-text" style="width: 43px;"><i class="fa-solid fa-eye" id="togglePassword" style="cursor: pointer;"></i></span>
+                            </div>   
                         </div>
 
                         <div class="row align-items-center remember">
                             <input type="checkbox">Remember Me
                         </div>
 
-                        <div class="form-group">
-                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        <input type="submit" value="Login" class="btn float-right">
+                        <br><br><br>
+
+                        <div class="links">
+                            Don't have an account?<a href="SignUp.php">Sign Up</a>
                         </div>
-
+    
+                        <div>
+                            <a href="NewPassword.html">Forgot your password?</a>
+                        </div>
                     </form>
-                </div>
-
-                <div class="card-footer">
-                    <div class="d-flex justify-content-center links">
-                        Don't have an account?<a href="SignUp.php">Sign Up</a>
-                    </div>
-
-                    <div class="d-flex justify-content-center">
-                        <a href="NewPassword.html">Forgot your password?</a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+      
+        togglePassword.addEventListener('click', function (e) {
+          // toggle the type attribute
+          const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+          password.setAttribute('type', type);
+          
+          // toggle the eye icon
+          this.classList.toggle('fa-eye');
+          this.classList.toggle('fa-eye-slash');
+        });
+      </script>
 </body>
 
 </html>

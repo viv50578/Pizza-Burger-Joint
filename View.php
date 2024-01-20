@@ -14,43 +14,75 @@ else {
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
+<title>Admin Panel</title>
+
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Acme&family=Kaushan+Script&family=Merienda:wght@600&family=Parisienne&family=Roboto+Slab&family=Ubuntu&family=Vollkorn&display=swap');
+    
     body{
-        /* background-color: black; */
+        background-color: #fff7af;
+    }
+    h1{
+        text-align: center;
+        font-family: 'Acme', sans-serif;
+        padding-top: 20px;
     }
     th {
         width: 15vw;
     }
+    #list{
+        border: 4px solid black;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: 'Roboto Slab', serif;
+    }
+    tr{
+        text-align: center;
+        border: 4px solid black;
+        background-image: linear-gradient(319deg, #f2dd6e 0%, #cff27e 37%, #ef959d 100%);
+    }
+    th{
+        background-image: linear-gradient(315deg, #090947 0%, #4d4c4d 74%);
+        color: white;
+    }
+    th,td{
+        border: 4px solid black;
+    }
+    .button{
+        display: flex;
+        justify-content: space-evenly;
+        font-family: 'Roboto Slab', serif;
+    }
 </style>
 
 <body>
+    <h1>Admin Panel</h1>
     <br>
-    <font size="4">
+    <div class="button" size="4">
 
         <a href="Home page.php">
-            <button type="submit" class="btn btn-info">Home Page</button>
-        </a><br><br>
+            <button type="submit" class="btn btn-primary">Home Page</button></a>
 
         <a href="Admin Addition.php">
-            <button type="submit" class="btn btn-info">Add Pizza/Burger</button>
-        </a><br><br>
+            <button type="submit" class="btn btn-primary">Add Pizza/Burger</button></a>
 
         <a href="Admin Editing.php">
-            <button type="submit" class="btn btn-warning">Edit Pizza/Burger</button>
-        </a><br><br>
+            <button type="submit" class="btn btn-primary">Edit Pizza/Burger</button>
+        </a>
 
-    </font>
+    </div>
+    <br><br>
 
-    <h1>View Product</h1>
-
-    <table id="list" border="4">
-        <tr align="center">
+    <table id="list">
+        <tr>
             <th>Name</th>
             <th>Image</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Delete</th>
         </tr>
     </table>
+    <br>
 </body>
 
 </html>
@@ -84,7 +116,7 @@ for ($i = 0; $i < count($Price); $i++) {
                 <td width = 5vw><img src=$img[$i] style=width:550px></td>\
                 <td width = 5vw>$Price[$i]</td>\
                 <td width = 5vw>$Description[$i]</td>\
-                <td><button id=$id[$i] onclick= myFunction(this.id)>Delete</button></td>\
+                <td><button class=btn btn-primary id=$id[$i] onclick= myFunction(this.id)>Delete</button></td>\
             </tr>';
         </script>";
 }

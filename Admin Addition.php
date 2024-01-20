@@ -69,7 +69,8 @@ else {
         }
         
         .box {
-            height: 435px;
+            display: flex;
+            flex-direction: column;
             margin-top: auto;
             margin-bottom: auto;
             padding-top: 10px;
@@ -111,10 +112,11 @@ else {
             flex: 2;
             padding: 15px;
         }
-        
-        .input-group-text {
+
+        .input-group-prepend span {
             width: 41.5px;
-            background-color: #95a4ff !important;
+            background-color: #95a4ff;
+            color: black;
         }
         
         .form-control{
@@ -166,7 +168,7 @@ else {
                         <input type="text" id="Description" name="Description" class="form-control" placeholder="Description" required>
                     </div>
 
-                    <input type="submit" value="Submit" style="background-color: #ffa580;">
+                    <input type="submit" value="Submit">
                 </form>
             </div>
         </div>

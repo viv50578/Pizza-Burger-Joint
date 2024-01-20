@@ -47,6 +47,10 @@ while ($row = $res->fetch_assoc()) {
     </script>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Acme&family=Roboto+Slab&family=Vollkorn:wght@500&display=swap');
+    * {
+      font-family: 'Roboto Slab', serif;
+    }
     .topnav {
       background-color: #000;
       overflow: hidden;
@@ -56,6 +60,7 @@ while ($row = $res->fetch_assoc()) {
     }
 
     .topnav a {
+      font-family: 'Vollkorn', serif;
       float: left;
       display: block;
       color: #f2f2f2;
@@ -67,7 +72,7 @@ while ($row = $res->fetch_assoc()) {
 
     .topnav a:hover {
       background-color: gold;
-      color: white;
+      color: black;
     }
 
     .topnav a.active {
@@ -92,7 +97,7 @@ while ($row = $res->fetch_assoc()) {
     <a href="Cart.html" style="float: right">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTRjlPrXg7wrtYiIu5aoQdECIXK2fyDE2yCA&usqp=CAU" height="37.5" width="37.5">
     </a>
-</div>
+  </div>
   <br>
   <br>
   <br>
@@ -100,38 +105,38 @@ while ($row = $res->fetch_assoc()) {
 
   </div>
 
-  <script type='text/javascript'>
-    var id = [<?php echo '"' . implode('","', $id) . '"' ?>];
-    var Name = [<?php echo '"' . implode('","', $Name) . '"' ?>];
-    var img = [<?php echo '"' . implode('","', $img) . '"' ?>];
-    var Price = [<?php echo '"' . implode('","', $Price) . '"' ?>];
-    var Description = [<?php echo '"' . implode('","', $Description) . '"' ?>];
+<script type='text/javascript'>
+  var id = [<?php echo '"' . implode('","', $id) . '"' ?>];
+  var Name = [<?php echo '"' . implode('","', $Name) . '"' ?>];
+  var img = [<?php echo '"' . implode('","', $img) . '"' ?>];
+  var Price = [<?php echo '"' . implode('","', $Price) . '"' ?>];
+  var Description = [<?php echo '"' . implode('","', $Description) . '"' ?>];
 
-    function check(form) {
-      document.getElementById('form').innerHTML
-    }
+  function addToCart(productId, quantity) {
+    // Implement the logic to add the product to the cart with the specified quantity
+    // You can use AJAX or any other method to send the data to the server
+    console.log("Product ID: " + productId + ", Quantity: " + quantity);
+  }
 
-    for (let i = 0; i < img.length; i++) {
-      document.getElementById('list').innerHTML += "\
-<figure>\
-<img src = "+ img[i] + " height = '300' width = '600'>\
-<font size = 4>\
-<label for=quantity>Quantity:</label>\
-  <input type=number id=quantity name=quantity min=0 max=10>\
-  <a href = Order.html>\
-  <button id="+ id[i] + "  onclick='check(this.form)' type=submit class='btn btn-danger'>Order Now</button>\
-  </a>\
-<figcaption>\
-<font size = 6>\
-"+ Name[i] + " ₹" + Price[i] + "\
-<br>\
-<font size = 4>\
-"+ Description[i] + "\
-</figcaption>\
-<br>\
-</figure>";
-    }
+  var pizzaList = document.getElementById('list');
+  pizzaList.setAttribute('style', 'display: flex; flex-direction: row; flex-wrap: wrap; text-align: centre; justify-content: space-evenly;')
+  for (let i = 0; i < img.length; i++) {
+    var pizzaBox = document.createElement('div');
+    pizzaBox.setAttribute('style', 'padding: 10px; margin: 10px; width: 380px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: flex; flex-direction: column;');
 
-  </script>;
+    pizzaBox.innerHTML = "\
+      <img src='" + img[i] + "' height='360' width='360' style='margin-bottom: 10px;'>\
+      <p style='font-size: 20px;'><strong>" + Name[i] + "</strong></p>\
+      <p style='margin-bottom: 10px;'>" + Description[i] + "</p>\
+      <label for='quantity'>Quantity:</label>\
+      <input type='number' id='quantity_" + id[i] + "' name='quantity' min='0' max='10' style='margin-bottom: 10px;'>\
+      <p style='font-size: 18px; display: flex; justify-content: space-between;'>\
+        <span>₹" + Price[i] + "</span>\
+        <button onclick='addToCart(" + id[i] + ", document.getElementById(\"quantity_" + id[i] + "\").value)' class='btn btn-danger'>Add to Cart</button>\
+      </p>";
+
+    pizzaList.appendChild(pizzaBox);
+  }
+</script>
 
 </html>

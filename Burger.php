@@ -67,7 +67,7 @@ while ($row = $res->fetch_assoc()) {
 
     .topnav a:hover {
       background-color: gold;
-      color: white;
+      color: black;
     }
 
     .topnav a.active {
@@ -109,7 +109,7 @@ while ($row = $res->fetch_assoc()) {
     for (let i = 0; i < img.length; i++) {
       document.getElementById('list').innerHTML += "\
 <figure>\
-<img src = "+ img[i] + " height = '162' width = '228'>\
+<img src = "+ img[i] + " height = '300' width = '400'>\
 <font size = 4>\
 <label for=quantity>Quantity:</label>\
   <input type=number id=quantity name=quantity min=0 max=10>\

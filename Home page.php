@@ -8,7 +8,7 @@
          transition: all ease 0.2s;
       }
       body{
-         background-color: #FF7F50;
+         background-color: #FF9A75;
          margin: 0;
          padding: 0;
       }

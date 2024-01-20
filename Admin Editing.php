@@ -37,7 +37,8 @@ else {
         }
 
         .box {
-            height: 430px;
+            display: flex;
+            flex-direction: column;
             margin-top: auto;
             margin-bottom: auto;
             padding-top: 10px;
@@ -71,10 +72,11 @@ else {
             flex: 2;
             padding: 15px;
         }
-        
-        .input-group-text {
+
+        .input-group-prepend span {
             width: 41.5px;
-            background-color: #95a4ff !important;
+            background-color: #95a4ff;
+            color: black;
         }
         
         .form-control{
@@ -103,7 +105,7 @@ else {
                     </div>
         
                     <label for="Img">Select image:</label>
-                    <input type="file" id="img" name="Img" accept="image/*" required><br><br>
+                    <input type="file" id="img" name="Img" accept="image/*" style="margin-bottom: 20px; margin-top: 5px;" required>
         
                     <div class="input-container input-group">
                         <div class="input-group-prepend">
@@ -126,7 +128,7 @@ else {
                         <input type="text" id="Description" name="Description" class="form-control" placeholder="New Description" required>
                     </div>
         
-                    <input type="submit" value="Submit" style="background-color: #ffa580;">
+                    <input type="submit" value="Submit">
                 </form>
             </div>
         </div>
