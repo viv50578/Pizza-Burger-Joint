@@ -110,14 +110,27 @@ for ($i = 0; $i < count($Price); $i++) {
     echo "
         <script type='text/javascript'>
             var table = document.getElementById('list');
-            table.innerHTML+='\
-            <tr>\
-                <td width = 5vw>$Name[$i]</td>\
-                <td width = 5vw><img src=$img[$i] style=width:550px></td>\
-                <td width = 5vw>$Price[$i]</td>\
-                <td width = 5vw>$Description[$i]</td>\
-                <td><button class=btn btn-primary id=$id[$i] onclick= myFunction(this.id)>Delete</button></td>\
-            </tr>';
+            var row = table.insertRow(-1);
+
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = '$Name[$i]';
+
+            var cell2 = row.insertCell(1);
+            cell2.innerHTML = '<img src=$img[$i] style=\"width:450px;padding:10px\">';
+
+            var cell3 = row.insertCell(2);
+            cell3.innerHTML = '$Price[$i]';
+
+            var cell4 = row.insertCell(3);
+            cell4.innerHTML = '$Description[$i]';
+
+            var cell5 = row.insertCell(4);
+            var deleteButton = document.createElement('button');
+            deleteButton.className = 'btn btn-danger'; // Add Bootstrap class
+            deleteButton.id = $id[$i];
+            deleteButton.onclick = function() { myFunction(this.id) };
+            deleteButton.innerHTML = 'Delete';
+            cell5.appendChild(deleteButton);
         </script>";
 }
 ?>

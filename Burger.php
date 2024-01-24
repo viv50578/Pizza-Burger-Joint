@@ -47,6 +47,10 @@ while ($row = $res->fetch_assoc()) {
     </script>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Acme&family=Roboto+Slab&family=Vollkorn:wght@500&display=swap');
+    * {
+      font-family: 'Roboto Slab', serif;
+    }
     .topnav {
       background-color: #000;
       overflow: hidden;
@@ -56,6 +60,7 @@ while ($row = $res->fetch_assoc()) {
     }
 
     .topnav a {
+      font-family: 'Vollkorn', serif;
       float: left;
       display: block;
       color: #f2f2f2;
@@ -78,7 +83,7 @@ while ($row = $res->fetch_assoc()) {
   <title>Burgers</title>
 </head>
 
-<body background="https://i.imgur.com/TND89w1.jpg">
+<body background="https://img.freepik.com/premium-vector/old-wooden-texture-cover-from-planks-ui-game-background-seamless-pattern-cartoon-style_191307-879.jpg">
 
 <div class="topnav">
     <a href="Home page.php">Home Page</a>
@@ -106,26 +111,51 @@ while ($row = $res->fetch_assoc()) {
     var Price = [<?php echo '"' . implode('","', $Price) . '"' ?>];
     var Description = [<?php echo '"' . implode('","', $Description) . '"' ?>];
 
-    for (let i = 0; i < img.length; i++) {
-      document.getElementById('list').innerHTML += "\
-<figure>\
-<img src = "+ img[i] + " height = '300' width = '400'>\
-<font size = 4>\
-<label for=quantity>Quantity:</label>\
-  <input type=number id=quantity name=quantity min=0 max=10>\
-  <a href = Order.html>\
-  <button type=submit class='btn btn-primary'>Add to Cart</button>\
-  </a>\
-<figcaption>\
-<font size = 6>\
-"+ Name[i] + " ₹" + Price[i] + "\
-<br>\
-<font size = 4>\
-"+ Description[i] + "\
-</figcaption>\
-<br>\
-</figure>";
+  function addToCart(productId, quantity) {
+    // Implement the logic to add the product to the cart with the specified quantity
+    // You can use AJAX or any other method to send the data to the server
+    console.log("Product ID: " + productId + ", Quantity: " + quantity);
+  }
+
+  var burgerList = document.getElementById('list');
+  burgerList.setAttribute('style', 'display: flex; flex-direction: row; flex-wrap: wrap; text-align: centre; justify-content: space-evenly;')
+  for (let i = 0; i < img.length; i++) {
+    var burgerBox = document.createElement('div');
+    burgerBox.setAttribute('style', 'padding: 10px; margin: 10px; width: 380px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: flex; flex-direction: column;');
+
+    burgerBox.innerHTML = "\
+      <div style='background-color: #333; padding: 10px; border-radius: 10px;'>\
+        <img src='" + img[i] + "' height='257.14' width='340' style='margin-bottom: 10px;'>\
+        <p style='font-size: 20px; color: red;'><strong>" + Name[i] + "</strong></p>\
+        <p style='margin-bottom: 10px; color: #fff'>" + Description[i] + "</p>\
+        <label for='quantity' style='color: #fff'>Quantity:</label>\
+        <div style='display: flex; align-items: center; margin-bottom: 10px;'>\
+          <button onclick='decrementQuantity(\"quantity_" + id[i] + "\")' class='btn btn-danger' style='margin-right: 5px; height: 37.6px; width: 37.6px'>-</button>\
+          <input type='number' id='quantity_" + id[i] + "' name='quantity' min='0' max='10' style='margin: 0 5px;'>\
+          <button onclick='incrementQuantity(\"quantity_" + id[i] + "\")' class='btn btn-danger' style='margin-left: 5px; height: 37.6px; width: 37.6px'>+</button>\
+        </div>\
+        <p style='font-size: 20px; display: flex; justify-content: space-between; color: red;'>\
+          <strong>₹" + Price[i] + "</strong>\
+          <button onclick='addToCart(" + id[i] + ", document.getElementById(\"quantity_" + id[i] + "\").value)' class='btn btn-danger'>Add to Cart</button>\
+        </p>\
+      </div>";
+
+    burgerList.appendChild(burgerBox);
+  }
+
+  function incrementQuantity(inputId) {
+    var inputElement = document.getElementById(inputId);
+    if (inputElement.value < 10) {
+        inputElement.value++;
     }
-  </script>;
+  }
+
+function decrementQuantity(inputId) {
+    var inputElement = document.getElementById(inputId);
+    if (inputElement.value > 0) {
+        inputElement.value--;
+    }
+  }
+</script>;
 
 </html>

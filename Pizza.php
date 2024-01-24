@@ -84,7 +84,7 @@ while ($row = $res->fetch_assoc()) {
   <title>Pizzas</title>
 </head>
 
-<body background="https://coolbackgrounds.io/images/backgrounds/index/aqua-d9b59c89.png">
+<body background="https://img.freepik.com/premium-vector/old-wooden-texture-cover-from-planks-ui-game-background-seamless-pattern-cartoon-style_191307-879.jpg">
 
 <div class="topnav">
     <a href="Home page.php">Home Page</a>
@@ -122,20 +122,40 @@ while ($row = $res->fetch_assoc()) {
   pizzaList.setAttribute('style', 'display: flex; flex-direction: row; flex-wrap: wrap; text-align: centre; justify-content: space-evenly;')
   for (let i = 0; i < img.length; i++) {
     var pizzaBox = document.createElement('div');
-    pizzaBox.setAttribute('style', 'padding: 10px; margin: 10px; width: 380px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: flex; flex-direction: column;');
+    pizzaBox.setAttribute('style', 'padding: 10px; margin: 10px; width: 380px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: flex; flex-direction: column;');
 
     pizzaBox.innerHTML = "\
-      <img src='" + img[i] + "' height='360' width='360' style='margin-bottom: 10px;'>\
-      <p style='font-size: 20px;'><strong>" + Name[i] + "</strong></p>\
-      <p style='margin-bottom: 10px;'>" + Description[i] + "</p>\
-      <label for='quantity'>Quantity:</label>\
-      <input type='number' id='quantity_" + id[i] + "' name='quantity' min='0' max='10' style='margin-bottom: 10px;'>\
-      <p style='font-size: 18px; display: flex; justify-content: space-between;'>\
-        <span>₹" + Price[i] + "</span>\
-        <button onclick='addToCart(" + id[i] + ", document.getElementById(\"quantity_" + id[i] + "\").value)' class='btn btn-danger'>Add to Cart</button>\
-      </p>";
+    <div style='background-color: #333; padding: 10px; border-radius: 10px;'>\
+        <img src='" + img[i] + "' height='340' width='340' style='margin-bottom: 10px;'>\
+        <p style='font-size: 20px; color: red;'><strong>" + Name[i] + "</strong></p>\
+        <p style='margin-bottom: 10px; color: #fff'>" + Description[i] + "</p>\
+        <label for='quantity' style='color: #fff'>Quantity:</label>\
+        <div style='display: flex; align-items: center; margin-bottom: 10px;'>\
+          <button onclick='decrementQuantity(\"quantity_" + id[i] + "\")' class='btn btn-danger' style='margin-right: 5px; height: 37.6px; width: 37.6px'>-</button>\
+          <input type='number' id='quantity_" + id[i] + "' name='quantity' min='0' max='10' style='margin: 0 5px;'>\
+          <button onclick='incrementQuantity(\"quantity_" + id[i] + "\")' class='btn btn-danger' style='margin-left: 5px; height: 37.6px; width: 37.6px'>+</button>\
+        </div>\
+        <p style='font-size: 20px; display: flex; justify-content: space-between; color: red;'>\
+          <strong>₹" + Price[i] + "</strong>\
+          <button onclick='addToCart(" + id[i] + ", document.getElementById(\"quantity_" + id[i] + "\").value)' class='btn btn-danger'>Add to Cart</button>\
+        </p>\
+      </div>";
 
     pizzaList.appendChild(pizzaBox);
+  }
+
+  function incrementQuantity(inputId) {
+    var inputElement = document.getElementById(inputId);
+    if (inputElement.value < 10) {
+        inputElement.value++;
+    }
+  }
+
+function decrementQuantity(inputId) {
+    var inputElement = document.getElementById(inputId);
+    if (inputElement.value > 0) {
+        inputElement.value--;
+    }
   }
 </script>
 
