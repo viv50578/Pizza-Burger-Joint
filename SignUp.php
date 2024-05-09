@@ -150,6 +150,13 @@
 
                         <div class="input-container input-group">
                             <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                            </div>
+                            <input type="text" name="location" class="form-control" placeholder="Delivery Address" required>
+                        </div>
+
+                        <div class="input-container input-group">
+                            <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                             </div>
                             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>

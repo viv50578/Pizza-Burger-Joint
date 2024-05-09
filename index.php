@@ -14,9 +14,10 @@ if (!$con) {
 $username = $_POST['name'];
 $Email = $_POST['email'];
 $PhoneNumber = $_POST['number'];
+$location = $_POST['location'];
 $password = $_POST['password'];
 
-$sql = "INSERT INTO `user login`.`login information` (`Sr. No.`, `Username`, `E-mail`, `Phone Number`, `Password`) VALUES (NULL,'$username', '$Email', '$PhoneNumber', '$password');";
+$sql = "INSERT INTO `user login`.`login information` (`Sr. No.`, `Username`, `E-mail`, `Phone Number`, `Location`, `Password`) VALUES (NULL,'$username', '$Email', '$PhoneNumber', '$location', '$password');";
 
 if ($con->query($sql) === TRUE) {
     // Set session for the user who just signed up

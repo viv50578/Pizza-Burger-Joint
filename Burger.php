@@ -93,7 +93,7 @@ while ($row = $res->fetch_assoc()) {
     <a href="javascript:void(0);" onclick="confirmLogout()" style="float: right">
         <img src="https://www.kindpng.com/picc/m/105-1055656_account-user-profile-avatar-avatar-user-profile-icon.png" height="37.5" width="37.5" style="border-radius: 50%">
     </a>
-    <a href="Cart.html" style="float: right">
+    <a href="Cart.php" style="float: right">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTRjlPrXg7wrtYiIu5aoQdECIXK2fyDE2yCA&usqp=CAU" height="37.5" width="37.5">
     </a>
 </div>
@@ -121,15 +121,15 @@ while ($row = $res->fetch_assoc()) {
   burgerList.setAttribute('style', 'display: flex; flex-direction: row; flex-wrap: wrap; text-align: centre; justify-content: space-evenly;')
   for (let i = 0; i < img.length; i++) {
     var burgerBox = document.createElement('div');
-    burgerBox.setAttribute('style', 'padding: 10px; margin: 10px; width: 380px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: flex; flex-direction: column;');
+    burgerBox.setAttribute('style', 'padding: 10px; margin: 10px; width: 400px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: flex; flex-direction: column; margin-bottom: 30px;');
 
     burgerBox.innerHTML = "\
       <div style='background-color: #333; padding: 10px; border-radius: 10px;'>\
-        <img src='" + img[i] + "' height='257.14' width='340' style='margin-bottom: 10px;'>\
+        <img src='" + img[i] + "' height='257.14' width='360' style='margin-bottom: 10px;'>\
         <p style='font-size: 20px; color: red;'><strong>" + Name[i] + "</strong></p>\
-        <p style='margin-bottom: 10px; color: #fff'>" + Description[i] + "</p>\
+        <p style='height: 100px; overflow: hidden; margin-bottom: 10px; color: #fff'>" + Description[i] + "</p>\
         <label for='quantity' style='color: #fff'>Quantity:</label>\
-        <div style='display: flex; align-items: center; margin-bottom: 10px;'>\
+        <div style='display: flex; align-items: center; margin-bottom: 10px; height: 50px'>\
           <button onclick='decrementQuantity(\"quantity_" + id[i] + "\")' class='btn btn-danger' style='margin-right: 5px; height: 37.6px; width: 37.6px'>-</button>\
           <input type='number' id='quantity_" + id[i] + "' name='quantity' min='0' max='10' style='margin: 0 5px;'>\
           <button onclick='incrementQuantity(\"quantity_" + id[i] + "\")' class='btn btn-danger' style='margin-left: 5px; height: 37.6px; width: 37.6px'>+</button>\
