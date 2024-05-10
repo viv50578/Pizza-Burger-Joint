@@ -62,15 +62,13 @@
       </a>
    </div>
 
-   <a href="Pizza.php">
-      <img onmouseover="bigImg(this)" onmouseout="normalImg(this)"
-         src="https://image.freepik.com/free-vector/pizza-melted-cartoon-illustration-flat-cartoon-style_138676-2876.jpg"
+   <a href="Menu.php#p">
+      <img src="https://image.freepik.com/free-vector/pizza-melted-cartoon-illustration-flat-cartoon-style_138676-2876.jpg"
          height="500" width="500" style="margin: 10px 10px 10px 10px;" class="pizzaimg">
    </a>
 
-   <a href="Burger.php">
-      <img onmouseover="bigImg(this)" onmouseout="normalImg(this)"
-         src="https://image.freepik.com/free-vector/cheese-burger-cartoon-icon-illustration_138676-2450.jpg"
+   <a href="Menu.php#b">
+      <img src="https://image.freepik.com/free-vector/cheese-burger-cartoon-icon-illustration_138676-2450.jpg"
          height="500" width="500" style="margin: 10px 10px 10px 10px;" class="burgerimg">
    </a>
 
