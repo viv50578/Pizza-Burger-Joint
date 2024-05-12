@@ -1,9 +1,15 @@
 <?php
 session_start();
-if (isset($_SESSION['Username']))
-  $userID = $_SESSION['Username'];
-else {
-  header("Location: login.php");
+if (isset($_SESSION['Username'])) {
+    $userID = $_SESSION['Username'];
+    // Check if the user has Sr. No. equal to 2
+    if ($userID != 2) {
+        header("Location: Menu.php#p");
+        exit(); // Ensure script stops executing after redirection
+    }
+} else {
+    header("Location: Menu.php#p");
+    exit(); // Ensure script stops executing after redirection
 }
 ?>
 

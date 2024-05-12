@@ -231,51 +231,47 @@ else {
           document.getElementsByTagName("body")[0].style.marginRight = "0";
         }
 
-        function updateNavbarOnScroll() {
-          var pizzaSection = document.getElementById("pizza-h1");
-          var burgerSection = document.getElementById("burger-h1");
-          var pizzaLink = document.getElementById("pizza-link");
-          var burgerLink = document.getElementById("burger-link");
-          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        // Get references to the navbar links and section elements
+        const pizzaLink = document.getElementById('pizza-link');
+        const burgerLink = document.getElementById('burger-link');
+        const pizzaSection = document.getElementById('pizza-section');
+        const burgerSection = document.getElementById('burger-section');
 
-          if (scrollTop >= cumulativeOffset(burgerSection) - 50 && scrollTop < cumulativeOffset(pizzaSection) - 50) {
-            burgerLink.classList.add("active");
-            pizzaLink.classList.remove("active");
-          } else if (scrollTop >= cumulativeOffset(pizzaSection) - 50) {
-            pizzaLink.classList.add("active");
-            burgerLink.classList.remove("active");
+        // Function to handle scroll event
+        function handleScroll() {
+          const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+          // Get the positions of the pizza and burger sections
+          const pizzaSectionPosition = pizzaSection.offsetTop;
+          const burgerSectionPosition = burgerSection.offsetTop;
+
+          // Remove the active class from both links
+          pizzaLink.classList.remove('active');
+          burgerLink.classList.remove('active');
+
+          // Add the active class based on the scroll position
+          if (scrollPosition < burgerSectionPosition) {
+            pizzaLink.classList.add('active');
           } else {
-            pizzaLink.classList.remove("active");
-            burgerLink.classList.remove("active");
+            burgerLink.classList.add('active');
           }
         }
 
-        // Call the updateNavbarOnScroll function when scrolling
-        window.addEventListener("scroll", updateNavbarOnScroll);
+        // Add the scroll event listener
+        window.addEventListener('scroll', handleScroll);
 
-        // Function to update navbar link styles when clicking on a link
-        function updateNavbarOnClick(clickedLink) {
-          console.log("Clicked on: " + clickedLink);  // Add this line
-          var pizzaLink = document.getElementById("pizza-link");
-          var burgerLink = document.getElementById("burger-link");
+        // Add click event listeners to the navbar links
+        pizzaLink.addEventListener('click', () => {
+          pizzaLink.classList.add('active');
+          burgerLink.classList.remove('active');
+          window.scrollTo({ top: pizzaSection.offsetTop, behavior: 'smooth' });
+        });
 
-          if (clickedLink === "burger") {
-            burgerLink.classList.add("active");
-            pizzaLink.classList.remove("active");
-          } else {
-            burgerLink.classList.remove("active");
-            pizzaLink.classList.add("active");
-          }
-        }
-
-        function cumulativeOffset(element) {
-          var top = 0;
-          do {
-            top += element.offsetTop || 0;
-            element = element.offsetParent;
-          } while(element);
-          return top;
-        };
+        burgerLink.addEventListener('click', () => {
+          burgerLink.classList.add('active');
+          pizzaLink.classList.remove('active');
+          window.scrollTo({ top: burgerSection.offsetTop, behavior: 'smooth' });
+        });
 
   </script>
 </head>
@@ -284,10 +280,10 @@ else {
 
 <div class="topnav">
     <a href="Home page.php">Home Page</a>
-    <a id="pizza-link" href="Menu.php#p" onclick="updateNavbarOnClick('pizza')">Pizzas</a>
-    <a id="burger-link" href="Menu.php#b" onclick="updateNavbarOnClick('burger')">Burgers</a>
+    <a id="pizza-link" href="Menu.php#p">Pizzas</a>
+    <a id="burger-link" href="Menu.php#b">Burgers</a>
     <a href="javascript:void(0);" onclick="confirmLogout()" style="float: right">
-        <img src="https://www.kindpng.com/picc/m/105-1055656_account-user-profile-avatar-avatar-user-profile-icon.png" height="37.5" width="37.5" style="border-radius: 50%">
+        <img src="Prof.png" height="38.5" width="37.5" style="border-radius: 50%">
     </a>
     <a href="javascript:void(0);" onclick="openCart()" style="float: right">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTRjlPrXg7wrtYiIu5aoQdECIXK2fyDE2yCA&usqp=CAU" height="37.5" width="37.5">

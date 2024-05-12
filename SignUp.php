@@ -117,7 +117,7 @@
 <body>
     <div class="container">
         <div class="left-half">
-            <img src="corgi.jpg">
+            <img src="panda.jpg">
         </div>
 
         <div class="right-half">

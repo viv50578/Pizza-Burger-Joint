@@ -24,7 +24,7 @@ if ($con->query($sql) === TRUE) {
     $newUserId = mysqli_insert_id($con);
     $_SESSION['Username'] = $newUserId;
     
-    header('Location: //localhost/Pizza-Burger-Joint/Pizza.php');
+    header('Location: //localhost/Pizza-Burger-Joint/Menu.php#p');
     exit();
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
