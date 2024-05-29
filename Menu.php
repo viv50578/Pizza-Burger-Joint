@@ -134,77 +134,94 @@ else {
         }
 
         function addToCart(productId, quantity, price, name, image) {
-          // Create a new div element for the cart item with the cart-item class
-          var cartItem = document.createElement('div');
-          cartItem.classList.add('cart-item'); // Add cart-item class
-          // Set the HTML content of the cart item
-          cartItem.innerHTML = "\
-            <div style='display: flex; align-items: center;'>\
-              <img src='" + image + "' height='110' width='154.002' style='margin-right: 10px;'>\
-              <div>\
-                <p><strong>" + name + "</strong></p>\
-                <p><strong>Quantity:</strong> " + quantity + "</p>\
-                <p><strong>Price:</strong> ₹" + (price * quantity) + "</p>\
-              </div>\
-            </div>\
-            <div>\
-              <button class='btn btn-danger' onclick='removeFromCart(this.parentNode.parentNode)'>Remove</button>\
-            </div>";
-          
-          // Get the cart items container
-          var cartItemsContainer = document.getElementById('cartItems');
-          // Append the cart item to the container
-          cartItemsContainer.appendChild(cartItem);
-          // Calculate total price
-          updateTotalPrice(price * quantity);
+            var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            var existingItem = cartItems.find(item => item.productId === productId);
+            if (existingItem) {
+                existingItem.quantity += parseInt(quantity);
+            } else {
+                cartItems.push({ productId, quantity: parseInt(quantity), price, name, image });
+            }
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            renderCartItems();
         }
 
-        // Variable to store total price
-        var totalPrice = 0;
-
-        function updateTotalPrice(amount) {
-        // Update total price
-        totalPrice += amount;
-        // Get the element for total price
-        var totalElement = document.getElementById('totalPrice');
-        // Update the content of total price element
-        totalElement.innerHTML = "\
-          <div style='text-align: center;'>\
-            <strong>Total Price: ₹" + totalPrice + "</strong>\
-            <br><br>\
-            <button class='btn btn-danger' onclick='redirectToOrder()'>Order Now!</button>\
-          </div>";
+        function removeFromCart(productId) {
+            var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems = cartItems.filter(item => item.productId !== productId);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            renderCartItems();
         }
 
-        function removeFromCart(item) {
-          // Get the parent container of the item to be removed
-          var cartItemsContainer = document.getElementById('cartItems');
-          // Get the price of the item to be removed
-          var price = parseInt(item.querySelector('p:nth-of-type(3)').textContent.split('₹')[1]);
-          // Update total price
-          totalPrice -= price;
-          // Update the total price element
-          document.getElementById('totalPrice').innerHTML = "\
-            <div style='text-align: center;'>\
-              <strong>Total Price: ₹" + totalPrice + "</strong>\
-              <br><br>\
-              <button class='btn btn-danger' onclick='redirectToOrder()'>Order Now!</button>\
-            </div>";
-          // Remove the entire cart-item div containing the item
-          cartItemsContainer.removeChild(item);
+        function updateTotalPrice() {
+            var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+            var totalElement = document.getElementById('totalPrice');
+            totalElement.innerHTML = "\
+                <div style='text-align: center;'>\
+                    <strong>Total Price: ₹" + totalPrice + "</strong>\
+                    <br><br>\
+                    <button class='btn btn-danger' onclick='redirectToOrder()'>Order Now!</button>\
+                </div>";
+        }
 
-          if (cartItemsContainer.childElementCount === 0) {
-              closeCart();
-          }
+        function renderCartItems() {
+            var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            var cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+            cartItems.forEach(item => {
+                var cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = "\
+                    <div style='display: flex; align-items: center;'>\
+                        <img src='" + item.image + "' height='110' width='154.002' style='margin-right: 10px;'>\
+                        <div>\
+                            <p><strong>" + item.name + "</strong></p>\
+                            <p><strong>Quantity:</strong> " + item.quantity + "</p>\
+                            <p><strong>Price:</strong> ₹" + (item.price * item.quantity) + "</p>\
+                        </div>\
+                    </div>\
+                    <div>\
+                        <button class='btn btn-danger' onclick='removeFromCart(" + item.productId + ")'>Remove</button>\
+                    </div>";
+                cartItemsContainer.appendChild(cartItem);
+            });
+            updateTotalPrice();
         }
 
         function redirectToOrder() {
             if (totalPrice === 0) {
                 alert("Your cart is empty. Please add items to your cart before proceeding to order.");
             } else {
-                window.location.href = "Order.html";
+                // Get the username and address of the current user
+                var username = "<?php echo $_SESSION['Username']; ?>";
+                var address = "<?php echo $_SESSION['Location']; ?>";
+                
+                // Get the cart items
+                var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                var items = cartItems.map(item => item.name + ":" + item.quantity).join(", ");
+                
+                // Send AJAX request to place_order.php
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "place_order.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            // Handle successful response (if needed)
+                            window.location.href="Order.html";
+                            // Clear the cart after placing the order
+                            localStorage.removeItem('cartItems');
+                            renderCartItems();
+                        } else {
+                            // Handle error response (if needed)
+                            alert("Error placing order. Please try again later.");
+                        }
+                    }
+                };
+                xhr.send("username=" + username + "&address=" + address + "&items=" + items + "&price=" + totalPrice);
             }
         }
+
 
 
         function incrementQuantity(inputId) {
@@ -255,10 +272,16 @@ else {
 
           var windowHeight = window.innerHeight;
 
-          if (pizzaPosition < windowHeight * 4.13 && pizzaPosition > -windowHeight * 4.13) {
+          // Check if the sidebar is open
+          var sidebarWidth = document.getElementById('cartSidebar').offsetWidth;
+
+          // Adjust the condition based on sidebar open/close
+          var offsetMultiplier = sidebarWidth > 0 ? 5.13 : 4.13;
+
+          if (pizzaPosition < windowHeight * offsetMultiplier && pizzaPosition > -windowHeight * offsetMultiplier) {
             pizzaLink.classList.add('active');
             burgerLink.classList.remove('active');
-          } else if (burgerPosition < windowHeight * 4 && burgerPosition > -windowHeight * 4) {
+          } else if (burgerPosition < windowHeight * offsetMultiplier && burgerPosition > -windowHeight * offsetMultiplier) {
             burgerLink.classList.add('active');
             pizzaLink.classList.remove('active');
           } else {
@@ -267,8 +290,13 @@ else {
           }
         }
 
+
         // Attach scroll event listener to handle section highlighting on scroll
         window.addEventListener('scroll', handleSectionHighlighting);
+
+        window.onload = function () {
+            renderCartItems();
+        };
 
   </script>
 </head>

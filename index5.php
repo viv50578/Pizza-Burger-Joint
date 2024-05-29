@@ -2,11 +2,11 @@
 session_start();
 
 $server = "localhost";
-$username = "root";
+$db_username = "root";
 $password = "";
-$database = "user login"; // Adjust according to your database name
+$database = "user login";
 
-$con = mysqli_connect($server, $username, $password, $database);
+$con = mysqli_connect($server, $db_username, $password, $database);
 
 if (!$con) {
     die("Connection to this database failed due to" . mysqli_connect_error());
@@ -21,11 +21,13 @@ $result = $con->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     
+    // Store username and location in session
+    $_SESSION['Username'] = $row['Username'];
+    $_SESSION['Location'] = $row['Location'];
+    
     if ($row['Sr. No.'] == 2) { // Check if Sr. No. is 2
-        $_SESSION['Username'] = $row['Sr. No.'];
         header('Location: //localhost/Pizza-Burger-Joint/View.php');
     } else {
-        $_SESSION['Username'] = $row['Sr. No.'];
         header('Location: //localhost/Pizza-Burger-Joint/Menu.php#p');
     }
 } else {
