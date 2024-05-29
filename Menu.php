@@ -106,9 +106,16 @@ else {
       font-size: 30px;
       text-align: center;
       color: ;
+      padding-top: 10px;
     }
 
-    #p, #b{
+    #p{
+      font-family: 'Merienda', cursive;
+      color: ;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+    #b{
       color: transparent;
       padding-bottom: 10px;
     }
@@ -192,8 +199,13 @@ else {
         }
 
         function redirectToOrder() {
-        window.location.href = "Order.html";
+            if (totalPrice === 0) {
+                alert("Your cart is empty. Please add items to your cart before proceeding to order.");
+            } else {
+                window.location.href = "Order.html";
+            }
         }
+
 
         function incrementQuantity(inputId) {
           var inputElement = document.getElementById(inputId);
@@ -231,47 +243,32 @@ else {
           document.getElementsByTagName("body")[0].style.marginRight = "0";
         }
 
-        // Get references to the navbar links and section elements
-        const pizzaLink = document.getElementById('pizza-link');
-        const burgerLink = document.getElementById('burger-link');
-        const pizzaSection = document.getElementById('pizza-section');
-        const burgerSection = document.getElementById('burger-section');
+        // Function to handle section highlighting
+        function handleSectionHighlighting() {
+          var pizzasSection = document.getElementById('pizza-h1');
+          var burgersSection = document.getElementById('burger-h1');
+          var pizzaLink = document.querySelector('.topnav a[href="Menu.php#p"]');
+          var burgerLink = document.querySelector('.topnav a[href="Menu.php#b"]');
 
-        // Function to handle scroll event
-        function handleScroll() {
-          const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+          var pizzaPosition = pizzasSection.getBoundingClientRect().top;
+          var burgerPosition = burgersSection.getBoundingClientRect().top;
 
-          // Get the positions of the pizza and burger sections
-          const pizzaSectionPosition = pizzaSection.offsetTop;
-          const burgerSectionPosition = burgerSection.offsetTop;
+          var windowHeight = window.innerHeight;
 
-          // Remove the active class from both links
-          pizzaLink.classList.remove('active');
-          burgerLink.classList.remove('active');
-
-          // Add the active class based on the scroll position
-          if (scrollPosition < burgerSectionPosition) {
+          if (pizzaPosition < windowHeight * 4.13 && pizzaPosition > -windowHeight * 4.13) {
             pizzaLink.classList.add('active');
-          } else {
+            burgerLink.classList.remove('active');
+          } else if (burgerPosition < windowHeight * 4 && burgerPosition > -windowHeight * 4) {
             burgerLink.classList.add('active');
+            pizzaLink.classList.remove('active');
+          } else {
+            pizzaLink.classList.remove('active');
+            burgerLink.classList.remove('active');
           }
         }
 
-        // Add the scroll event listener
-        window.addEventListener('scroll', handleScroll);
-
-        // Add click event listeners to the navbar links
-        pizzaLink.addEventListener('click', () => {
-          pizzaLink.classList.add('active');
-          burgerLink.classList.remove('active');
-          window.scrollTo({ top: pizzaSection.offsetTop, behavior: 'smooth' });
-        });
-
-        burgerLink.addEventListener('click', () => {
-          burgerLink.classList.add('active');
-          pizzaLink.classList.remove('active');
-          window.scrollTo({ top: burgerSection.offsetTop, behavior: 'smooth' });
-        });
+        // Attach scroll event listener to handle section highlighting on scroll
+        window.addEventListener('scroll', handleSectionHighlighting);
 
   </script>
 </head>
@@ -280,10 +277,10 @@ else {
 
 <div class="topnav">
     <a href="Home page.php">Home Page</a>
-    <a id="pizza-link" href="Menu.php#p">Pizzas</a>
-    <a id="burger-link" href="Menu.php#b">Burgers</a>
+    <a href="Menu.php#p">Pizzas</a>
+    <a href="Menu.php#b">Burgers</a>
     <a href="javascript:void(0);" onclick="confirmLogout()" style="float: right">
-        <img src="Prof.png" height="38.5" width="37.5" style="border-radius: 50%">
+        <img src="Prof.png" height="37.5" width="37.5" style="border-radius: 50%">
     </a>
     <a href="javascript:void(0);" onclick="openCart()" style="float: right">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTRjlPrXg7wrtYiIu5aoQdECIXK2fyDE2yCA&usqp=CAU" height="37.5" width="37.5">
@@ -326,7 +323,7 @@ while ($row = $res->fetch_assoc()) {
 }
 ?>
 
-<h1 id="p">Hidden</h1>
+<h1 id="p">Greetings!</h1>
 <h1 id="pizza-h1">Pizzas</h1>
 <!-- Dynamically generated pizza list -->
 <div id='list'>
