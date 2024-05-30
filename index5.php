@@ -2,11 +2,10 @@
 session_start();
 
 $server = "localhost";
-$db_username = "root";
+$username = "root";
 $password = "";
-$database = "user login";
 
-$con = mysqli_connect($server, $db_username, $password, $database);
+$con = mysqli_connect($server, $username, $password);
 
 if (!$con) {
     die("Connection to this database failed due to" . mysqli_connect_error());
@@ -15,8 +14,10 @@ if (!$con) {
 $Username = $_POST['Username'];
 $Password = $_POST['Password'];
 
-$sql = "SELECT * FROM `login information` WHERE `Username` = '$Username' AND `Password` = '$Password'";
-$result = $con->query($sql);
+$stmt = $con->prepare("SELECT * FROM `user login`.`login information` WHERE `Username` = ? AND `Password` = ?");
+$stmt->bind_param("ss", $Username, $Password);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
@@ -24,6 +25,7 @@ if ($result->num_rows > 0) {
     // Store username and location in session
     $_SESSION['Username'] = $row['Username'];
     $_SESSION['Location'] = $row['Location'];
+    $_SESSION['SrNo'] = $row['Sr. No.'];
     
     if ($row['Sr. No.'] == 2) { // Check if Sr. No. is 2
         header('Location: //localhost/Pizza-Burger-Joint/View.php');

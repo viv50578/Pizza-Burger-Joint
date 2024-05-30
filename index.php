@@ -2,10 +2,10 @@
 session_start();
 
 $server = "localhost";
-$db_username = "root";
+$username = "root";
 $password = "";
 
-$con = mysqli_connect($server, $db_username, $password);
+$con = mysqli_connect($server, $username, $password);
 
 if (!$con) {
     die("Connection to this database failed due to" . mysqli_connect_error());

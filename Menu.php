@@ -7,6 +7,7 @@ else {
 }
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -156,12 +157,17 @@ else {
             var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
             totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
             var totalElement = document.getElementById('totalPrice');
-            totalElement.innerHTML = "\
-                <div style='text-align: center;'>\
-                    <strong>Total Price: ₹" + totalPrice + "</strong>\
-                    <br><br>\
-                    <button class='btn btn-danger' onclick='redirectToOrder()'>Order Now!</button>\
-                </div>";
+
+            if (totalPrice === 0) {
+                totalElement.innerHTML = "<strong><div style='text-align: center; color: white;'>Your cart is empty.</div></strong>";
+            } else {
+                totalElement.innerHTML = "\
+                    <div style='text-align: center;'>\
+                        <strong>Total Price: ₹" + totalPrice + "</strong>\
+                        <br><br>\
+                        <button class='btn btn-danger' onclick='redirectToOrder()'>Order Now!</button>\
+                    </div>";
+            }
         }
 
         function renderCartItems() {
@@ -221,8 +227,6 @@ else {
                 xhr.send("username=" + username + "&address=" + address + "&items=" + items + "&price=" + totalPrice);
             }
         }
-
-
 
         function incrementQuantity(inputId) {
           var inputElement = document.getElementById(inputId);
@@ -305,7 +309,7 @@ else {
 
 <div class="topnav">
     <a href="Home page.php">Home Page</a>
-    <a href="Menu.php#p">Pizzas</a>
+    <a class="active" href="Menu.php#p">Pizzas</a>
     <a href="Menu.php#b">Burgers</a>
     <a href="javascript:void(0);" onclick="confirmLogout()" style="float: right">
         <img src="Prof.png" height="37.5" width="37.5" style="border-radius: 50%">

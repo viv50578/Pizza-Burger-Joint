@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (isset($_SESSION['Username'])) {
-    $userID = $_SESSION['Username'];
+if (isset($_SESSION['SrNo'])) {
+    $userSrNo = $_SESSION['SrNo'];
     // Check if the user has Sr. No. equal to 2
-    if ($userID != 2) {
+    if ($userSrNo != 2) {
         header("Location: Menu.php#p");
         exit(); // Ensure script stops executing after redirection
     }
