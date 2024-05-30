@@ -214,7 +214,7 @@ else {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
                             // Handle successful response (if needed)
-                            window.location.href="Order.html";
+                            window.location.href="Order.php";
                             // Clear the cart after placing the order
                             localStorage.removeItem('cartItems');
                             renderCartItems();
@@ -225,7 +225,24 @@ else {
                     }
                 };
                 xhr.send("username=" + username + "&address=" + address + "&items=" + items + "&price=" + totalPrice);
+                setOrderSessionAndRedirect();
             }
+        }
+
+        function setOrderSessionAndRedirect() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "set_order_session.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        window.location.href = "Order.php";
+                    } else {
+                        alert("Error initiating order. Please try again later.");
+                    }
+                }
+            };
+            xhr.send();
         }
 
         function incrementQuantity(inputId) {
