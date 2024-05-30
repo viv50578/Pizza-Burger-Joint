@@ -21,35 +21,35 @@
 
 ## Images
 
-**Home Page**
+### Home Page
 ![Home Page](/Images/Home.png)
 
-**Login Page**
+### Login Page
 ![Login Page](/Images/Login.png)
 
-**SignUp Page**
+### SignUp Page
 ![SignUp Page](/Images/SignUp.png)
 
-**Change Password Page**
+### Change Password Page
 ![Change Password Page](/Images/Password.png)
 
-**Pizza Section**
+### Pizza Section
 ![Pizza Section](/Images/Pizza.png)
 
-**Burger Section**
+### Burger Section
 ![Burger Section](/Images/Burger.png)
 
-**Cart**
+### Cart
 ![Cart](/Images/Cart.png)
 
-**Order Success Page**
+### Order Success Page
 ![Order Success Page](/Images/Order.png)
 
-**Admin Panel**
+### Admin Panel
 ![Admin Panel](/Images/Admin.png)
 
-**Admin Addition Form**
+### Admin Addition Form
 ![Admin Addition Form](/Images/Addition.png)
 
-**Admin Editing Form**
+### Admin Editing Form
 ![Admin Editing Form](/Images/Editing.png)
